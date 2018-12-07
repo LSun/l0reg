@@ -9,6 +9,16 @@
 #' @export
 #' @importFrom stats dnorm pnorm
 #' @importFrom utils capture.output modifyList
+#' @examples
+#' set.seed(777)
+#' n <- 1000
+#' p <- 100
+#' X <- matrix(rnorm(n * p), n, p)
+#' beta <- c(rep(5, 5), rep(0, p - 5)) / sqrt(n)
+#' y <- X %*% beta + rnorm(n)
+#' fit <- l0reg(X, y, lambda = 3)
+#' fit
+#'
 #'
 l0reg = function (X, y, lambda, control = list()) {
   A <- X
@@ -320,7 +330,7 @@ obj.nonzero <- cbind(
   opt.obj.value = Jit[!is.na(Jit)]
 )
 
-result <- list(nonzero.coef = x.sparse, obj.val = obj.nonzero, status = FLAG,
+result <- list(nonzero.coef = x.sparse, obj.val = obj.nonzero, status = ifelse(FLAG > -0.5, 'converged', 'abnormal'),
                coef = x, X = X, y = y, lambda = lambda / 2, explore = explore, K = K
                )
 class(result) <- 'l0reg'

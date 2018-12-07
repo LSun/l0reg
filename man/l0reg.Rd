@@ -17,3 +17,15 @@ l0reg(X, y, lambda, control = list())
 This is the main function for solving $l_0$-regularized least squres for a given
 penalty parameter, based on the Single Best Replacement (SBR) algorithm originally proposed by Soussen et al (2011)
 }
+\examples{
+set.seed(777)
+n <- 1000
+p <- 100
+X <- matrix(rnorm(n * p), n, p)
+beta <- c(rep(5, 5), rep(0, p - 5)) / sqrt(n)
+y <- X \%*\% beta + rnorm(n)
+fit <- l0reg(X, y, lambda = 3)
+fit
+
+
+}
