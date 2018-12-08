@@ -12,11 +12,11 @@
 #' @examples
 #' set.seed(777)
 #' n <- 1000
-#' p <- 100
+#' p <- 200
 #' X <- matrix(rnorm(n * p), n, p)
 #' beta <- c(rep(5, 5), rep(0, p - 5)) / sqrt(n)
 #' y <- X %*% beta + rnorm(n)
-#' fit <- l0reg(X, y, lambda = 3)
+#' fit <- l0reg(X, y, lambda = 4)
 #' fit
 #'
 #'
