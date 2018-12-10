@@ -3,8 +3,8 @@
 #' @description This is the main function for solving $l_0$-regularized least squres for a given
 #' penalty parameter, based on the Single Best Replacement (SBR) algorithm originally proposed by Soussen et al (2011)
 #'
-#' @param X A n by p numeric design matrix
-#' @param y A n vector of numeric response
+#' @param X A normalized n by p numeric design matrix
+#' @param y A normalized n vector of numeric response
 #' @param lambda A non-negative numeric penalty parameter
 #' @export
 #' @importFrom stats dnorm pnorm
